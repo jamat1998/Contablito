@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1{
+    text-align: center;
+    color: blue;
+}
+th, td{
+    border: 1px solid black;
+    padding: 5px;
+}
+table{
+    border: 1px solid black; 
+}
+div{
+    margin: 10px;
+}
+label, input , p{
+    margin:5px;
+}
+form{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
+}

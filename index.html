@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contablito</title>
+</head>
+<body>
+    <h1>Contablito</h1>
+    <form id="form">
+    <div class="description">  
+      <label>Descripcion<input id="description" type="text"></label>
+    </div>
+    <div class="transaccion">     
+    <label>Tipo Transaccion</label>
+        <label><input id="compra" name="transaccion" type="radio" value="Compra">Compra</label>
+        <label><input id="venta" name="transaccion" type="radio" value="Venta">Venta</label>
+    </div>
+    <div class="iva"> 
+        <label>Tipo IVA</label>
+        <label><input id="basico" name="iva" type="radio" value="22">Basico</label>
+        <label><input id="minimo" name="iva" type="radio" value="10">Minimo</label>
+        <label><input id="exento" name="iva" type="radio" value="0">Exento</label>
+    </div> 
+        <div class="submit"> 
+        <label>Subtotal($)<input id="inputtotal" type="number"></label>
+        <button id="submit" type="submit">Ingresar</button>
+        </div> 
+          <div class="table"> 
+          <table id="table">
+            <tr>
+              <th>Descripcion</th>
+              <th>Tipo</th>
+              <th>Subtotal($)</th>
+              <th>IVA($)</th>
+              <th>Total(IVA inc)</th>
+            </tr>
+          </table>
+        </div>     
+        <div class="totales"> 
+          <p id="totalsell">Total Ventas:</p>
+          <p id="totalbuy">Total Compras:</p>
+        </div>
+      </form>
+    <script src="./contablito.js"></script>
+</body>
+</html>
