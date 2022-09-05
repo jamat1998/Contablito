@@ -18,10 +18,10 @@ const $dayTotalBuy = d.getElementsByClassName('dayTotalBuy')
 
 d.addEventListener('submit',(e)=>{
     e.preventDefault();
-    let ivaBasico = parseInt($basico.value);
-    let ivaMinimo = parseInt($minimo.value);
-    let ivaExento = parseInt($exento.value);
     let monto = parseInt($inputtotal.value);  
+    let ivaBasico = parseInt($basico.value * monto) / 100;
+    let ivaMinimo = parseInt($minimo.value * monto) / 100;
+    let ivaExento = parseInt($exento.value * monto) / 100;
     
 function totalVentas() {
     let r=[]
@@ -40,7 +40,7 @@ if($venta.checked && $basico.checked && !$inputtotal.value == ''){
     <td>${$description.value}</td>
     <td>${$venta.value}</td>
     <td class='dayTotalSell'>${$inputtotal.value}</td>
-    <td>${$basico.value}</td>
+    <td>${ivaBasico}</td>
     <td>${ivaBasico + monto}</td>
     </tr>
     `
@@ -53,7 +53,7 @@ if($venta.checked && $minimo.checked && !$inputtotal.value == ''){
     <td>${$description.value}</td>
     <td>${$venta.value}</td>
     <td class='dayTotalSell'>${$inputtotal.value}</td>
-    <td>${$minimo.value}</td>
+    <td>${ivaMinimo}</td>
     <td>${ivaMinimo + monto}</td>
     </tr>
     `
@@ -67,7 +67,7 @@ if($venta.checked && $exento.checked && !$inputtotal.value == ''){
     <td>${$description.value}</td>
     <td>${$venta.value}</td>
     <td class='dayTotalSell'>${$inputtotal.value}</td>
-    <td>${$exento.value}</td>
+    <td>${ivaExento}</td>
     <td>${ivaExento + monto}</td>
     </tr>
     `
@@ -91,7 +91,7 @@ if($compra.checked && $basico.checked && !$inputtotal.value == ''){
     <td>${$description.value}</td>
     <td>${$compra.value}</td>
     <td class='dayTotalBuy'>${$inputtotal.value}</td>
-    <td>${$basico.value}</td>
+    <td>${ivaBasico}</td>
     <td>${ivaBasico + monto}</td>
     </tr>
     `
@@ -103,7 +103,7 @@ if($compra.checked && $minimo.checked && !$inputtotal.value == ''){
     <td>${$description.value}</td>
     <td>${$compra.value}</td>
     <td class='dayTotalBuy'>${$inputtotal.value}</td>
-    <td>${$minimo.value}</td>
+    <td>${ivaMinimo}</td>
     <td>${ivaMinimo + monto}</td>
     </tr>
     `
@@ -115,7 +115,7 @@ if($compra.checked && $exento.checked && !$inputtotal.value == ''){
     <td>${$description.value}</td>
     <td>${$compra.value}</td>
     <td class='dayTotalBuy'>${$inputtotal.value}</td>
-    <td>${$exento.value}</td>
+    <td>${ivaExento}</td>
     <td>${ivaExento + monto}</td>
     </tr>
     `
