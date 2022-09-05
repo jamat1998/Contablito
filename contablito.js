@@ -15,13 +15,24 @@ const $transaciones = d.getElementsByTagName('tbody');
 const $dayTotalSell = d.getElementsByClassName('dayTotalSell');
 const $dayTotalBuy = d.getElementsByClassName('dayTotalBuy')
 
-
 d.addEventListener('submit',(e)=>{
     e.preventDefault();
     let monto = parseInt($inputtotal.value);  
     let ivaBasico = parseInt($basico.value * monto) / 100;
     let ivaMinimo = parseInt($minimo.value * monto) / 100;
     let ivaExento = parseInt($exento.value * monto) / 100;
+    
+    function insert(operacion,tipoDeIva){
+        $transaciones[0].innerHTML+= `
+        <tr>
+        <td>${$description.value}</td>
+        <td>${operacion.value}</td>
+        <td class='dayTotalSell'>${$inputtotal.value}</td>
+        <td>${tipoDeIva}</td>
+        <td>${tipoDeIva + monto}</td>
+        </tr>
+        `
+    }
     
 function totalVentas() {
     let r=[]
@@ -35,42 +46,18 @@ function totalVentas() {
 }
 
 if($venta.checked && $basico.checked && !$inputtotal.value == ''){ 
-    $transaciones[0].innerHTML+= `
-    <tr>
-    <td>${$description.value}</td>
-    <td>${$venta.value}</td>
-    <td class='dayTotalSell'>${$inputtotal.value}</td>
-    <td>${ivaBasico}</td>
-    <td>${ivaBasico + monto}</td>
-    </tr>
-    `
-    totalVentas()
+   insert($venta,ivaBasico)
+   totalVentas()
 }
 
 if($venta.checked && $minimo.checked && !$inputtotal.value == ''){
-    $transaciones[0].innerHTML+= `
-    <tr>
-    <td>${$description.value}</td>
-    <td>${$venta.value}</td>
-    <td class='dayTotalSell'>${$inputtotal.value}</td>
-    <td>${ivaMinimo}</td>
-    <td>${ivaMinimo + monto}</td>
-    </tr>
-    `
+    insert($venta,ivaMinimo)
     totalVentas()
 }
 
 
 if($venta.checked && $exento.checked && !$inputtotal.value == ''){
-    $transaciones[0].innerHTML+= `
-    <tr>
-    <td>${$description.value}</td>
-    <td>${$venta.value}</td>
-    <td class='dayTotalSell'>${$inputtotal.value}</td>
-    <td>${ivaExento}</td>
-    <td>${ivaExento + monto}</td>
-    </tr>
-    `
+    insert($venta,ivaExento)
     totalVentas()
 }
 
@@ -86,39 +73,15 @@ function totalCompras() {
 }
 
 if($compra.checked && $basico.checked && !$inputtotal.value == ''){
-    $transaciones[0].innerHTML+= `
-    <tr>
-    <td>${$description.value}</td>
-    <td>${$compra.value}</td>
-    <td class='dayTotalBuy'>${$inputtotal.value}</td>
-    <td>${ivaBasico}</td>
-    <td>${ivaBasico + monto}</td>
-    </tr>
-    `
+    insert($compra,ivaBasico)
     totalCompras()
 }
 if($compra.checked && $minimo.checked && !$inputtotal.value == ''){
-    $transaciones[0].innerHTML+= `
-    <tr>
-    <td>${$description.value}</td>
-    <td>${$compra.value}</td>
-    <td class='dayTotalBuy'>${$inputtotal.value}</td>
-    <td>${ivaMinimo}</td>
-    <td>${ivaMinimo + monto}</td>
-    </tr>
-    `
+    insert($compra,ivaMinimo)
     totalCompras()
 }
 if($compra.checked && $exento.checked && !$inputtotal.value == ''){
-    $transaciones[0].innerHTML+= `
-    <tr>
-    <td>${$description.value}</td>
-    <td>${$compra.value}</td>
-    <td class='dayTotalBuy'>${$inputtotal.value}</td>
-    <td>${ivaExento}</td>
-    <td>${ivaExento + monto}</td>
-    </tr>
-    `
+    insert($compra,ivaExento)
     totalCompras()
 }
 if($inputtotal.value == ''){
